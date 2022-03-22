@@ -1,0 +1,41 @@
+#------------------------------------------------------------------#
+# must check the direction of data_root and result_root before run #
+#------------------------------------------------------------------#
+
+#configure feature path
+# **** please must modify the data_root before first running ****
+data_root: &d_r C:\\Users\\谢一鸣\\Documents\\Tencent Files\\282314905\\FileRecv\\HGNN参数探究实验
+modelnet40_ft: !join [*d_r, 基因.mat]
+
+
+#Hypergraph
+graph_type: &g_t hypergraph
+K_neigs: [3]
+m_prob: 1.0
+is_probH: False
+#---------------------------------------
+# change me
+
+#---------------------------------------
+
+
+#Model
+#--------------------------------------------------
+# select the dataset you use, ModelNet40 or NTU2012
+on_dataset: &o_d ModelNet40
+#on_dataset: &o_d NTU2012
+#--------------------------------------------------
+
+#---------------------------------------
+# change me
+
+#---------------------------------------
+
+
+#Result
+# configure result path
+# **** please must modify the result_root before first running ****
+result_root: &r_r C:\\Users\\谢一鸣\\Documents\\Tencent Files\\282314905\\FileRecv\\HGNN参数探究实验
+result_sub_folder: !join [*r_r, !concat [ *g_t, _, *o_d ]]
+ckpt_folder: !join [*r_r, ckpt]
+
